@@ -33,7 +33,7 @@ mkdir -p /etc/systemd/system
 ln -si "$( pwd )/systemd-services"/* /etc/systemd/system/
 systemctl daemon-reload
 for service in systemd-services/*; do
-    echo $service 
+    systemctl enable "${service}" 
 done
 
 mkdir -p /etc/initcpio/post
