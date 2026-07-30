@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+uki="$3"
+[[ -n "$uki" ]] || exit 0
+
+toolchain_dir="$( dirname "$( readlink -e "$0" )" )/.."
+key="${toolchain_dir}/mok/mok.key"
+cert="${toolchain_dir}/mok/mok.crt"
+
+if ! sbverify --cert "$cert" "$uki" &>/dev/null; then
+    sbsign "$uki" --key "$key" --cert "$cert" --output "$uki"
+fi
