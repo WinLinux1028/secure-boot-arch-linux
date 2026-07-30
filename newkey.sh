@@ -4,8 +4,9 @@ set -e
 cd "$( dirname "$( readlink -e "$0" )" )"
 source ./config.sh
 
-TODAY="$( date --date '00:00:00' +%s )"
-DAYS="$( expr \( "${END_DATE}" - "${TODAY}" \) / 86400 )"
+TODAY_UNIX_TIME="$( date --date '00:00:00' +%s )"
+END_DATE_UNIX_TIME="$( date --date "${END_DATE}" +%s )"
+DAYS="$( expr \( "${END_DATE_UNIX_TIME}" - "${TODAY_UNIX_TIME}" \) / 86400 )"
 
 mkdir -p mok
 cd mok

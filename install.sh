@@ -15,7 +15,7 @@ if ! pacman -Q shim-signed; then
     INSTALL_PACKAGES+=('shim-signed')
 fi
 if [ ${#INSTALL_PACKAGES[@]} -ne 0 ]; then
-    ${AUR_HELPER} "${INSTALL_PACKAGES[@]}"
+    ${AUR_HELPER_PKG_INSTALL} "${INSTALL_PACKAGES[@]}"
 fi
 
 rm -rf pacman-hooks
