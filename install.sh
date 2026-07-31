@@ -59,4 +59,4 @@ if [ -n "${BOOTENTRY_NAME}" ]; then
 fi
 
 echo "✅️ Installation successful!"
-echo "MokManager will launch during the first boot in Secure Boot mode, so please enroll the mok.csr file located at the root of the ESP."
+echo "MokManager will launch during the first boot in Secure Boot mode, so please enroll the mok.cer file located at the root of the ESP."
