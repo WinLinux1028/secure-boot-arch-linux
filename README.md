@@ -14,3 +14,7 @@ Makes it easy to use Secure Boot on Arch Linux and other Arch-based distribution
 7. Enable Secure Boot.
 8. MokManager will launch. Enroll `mok.cer`, which is located at the root of the ESP.
 9. The system should now boot normally.
+
+## FAQ
+### Q. Changes are not applied after running `grub-mkconfig`.
+A. Run the included `update-grub.sh` instead of `grub-mkconfig` (no arguments required).
