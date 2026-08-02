@@ -1,6 +1,12 @@
 # Secure Boot Setup Tool for Arch Linux
 Makes it easy to use Secure Boot on Arch Linux and other Arch-based distributions.
 
+**Advantages**
+- Does not require Setup Mode as it uses a Microsoft-signed [shim](https://github.com/rhboot/shim).
+   - Easy setup with almost zero risk of bricking your PC.
+- Automatically signs DKMS modules.
+   - Allows you to use DKMS modules even in [lockdown mode](https://wiki.archlinux.org/title/Security#Kernel_lockdown_mode).
+
 ## How to use
 1. Clone this repository.
 2. Place it in a directory of your choice.
