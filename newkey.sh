@@ -14,8 +14,8 @@ cd mok
 openssl req \
     -new \
     -x509 \
-    -newkey rsa:2048 \
-    -sha256 \
+    -newkey rsa:4096 \
+    -sha3-512 \
     -nodes \
     -days "${DAYS}" \
     -subj "${SUBJECT}" \
