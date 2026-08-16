@@ -49,7 +49,7 @@ ln -si "$( pwd )/mkinitcpio-hooks"/* /etc/initcpio/post/
 ESP_DIR="$( findmnt -n -o TARGET -T "${EFI_DIR}" )"
 
 dkms status | while read -r line; do
-    if ! echo "${line}" | grep -Eq '^[^,]+,[^,]+,[^:]+:\s*(built|installed)'; then
+    if ! echo "${line}" | grep -Eq '^[^,]+,[^,]+,[^:]+:[[:space:]]*(built|installed)'; then
         continue
     fi
 
@@ -73,7 +73,7 @@ mkinitcpio -P
 cp -f mok/mok.cer "${ESP_DIR}/"
 
 if [ -n "${BOOTENTRY_NAME}" ]; then
-    EXISTING_SAME_NAME_BOOT_ENTRY="$( efibootmgr | grep -P "^Boot[0-9A-Fa-f]+[^\s]*\s+${BOOTENTRY_NAME}" | sed -nE 's/^Boot([0-9A-Fa-f]*).*$/\1/p' )"
+    EXISTING_SAME_NAME_BOOT_ENTRY="$( efibootmgr | grep -E "^Boot[0-9A-Fa-f]+[^[:space:]]*[[:space:]]+${BOOTENTRY_NAME}" | sed -nE 's/^Boot([0-9A-Fa-f]*).*$/\1/p' )"
     for bootnum in ${EXISTING_SAME_NAME_BOOT_ENTRY}; do
         efibootmgr --bootnum "${bootnum}" --delete-bootnum
     done
