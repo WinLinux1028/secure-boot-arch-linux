@@ -17,7 +17,7 @@ cat << EOF > "${OUT_FILE_DIR_NAME}/${OUT_FILE_NAME}"
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = shim-signed
+Target = shim-signed-bin
 
 [Action]
 Description = Updating shim

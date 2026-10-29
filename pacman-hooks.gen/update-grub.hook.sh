@@ -17,7 +17,7 @@ cat << EOF > "${OUT_FILE_DIR_NAME}/${OUT_FILE_NAME}"
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Type = File
+Type = Path
 Target = usr/lib/modules/*/vmlinuz
 
 [Trigger]

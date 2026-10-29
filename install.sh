@@ -11,8 +11,8 @@ fi
 if ! pacman -Q sbsigntools; then
     INSTALL_PACKAGES+=('sbsigntools')
 fi
-if ! pacman -Q shim-signed; then
-    INSTALL_PACKAGES+=('shim-signed')
+if ! pacman -Q shim-signed-bin; then
+    INSTALL_PACKAGES+=('shim-signed-bin')
 fi
 if [ ${#INSTALL_PACKAGES[@]} -ne 0 ]; then
     ${AUR_HELPER_PKG_INSTALL} "${INSTALL_PACKAGES[@]}"
@@ -70,6 +70,12 @@ done
 mkinitcpio -P
 ./update-grub.sh
 ./update-shim.sh
+
+if [ -f /usr/lib/fwupd/efi/fwupdx64.efi ]; then
+    ./sign-fwupd.sh
+fi
+
+./sign-fwupd.sh
 cp -f mok/mok.cer "${ESP_DIR}/"
 
 if [ -n "${BOOTENTRY_NAME}" ]; then
