@@ -4,6 +4,14 @@ set -e
 cd "$( dirname "$( readlink -e "$0" )" )"
 source ./config.sh
 
+UNINSTALL_PACKAGES=()
+if pacman -Q grub-hook; then
+    UNINSTALL_PACKAGES+=('grub-hook')
+fi
+if [ ${#UNINSTALL_PACKAGES[@]} -ne 0 ]; then
+    pacman -Rns "${UNINSTALL_PACKAGES[@]}"
+fi
+
 INSTALL_PACKAGES=()
 if ! pacman -Q grub; then
     INSTALL_PACKAGES+=('grub')
